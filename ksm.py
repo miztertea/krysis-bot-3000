@@ -33,7 +33,7 @@ else:
     print("( ✔ )")
 
 # Output the header
-print("\n\nMythic Plus KSM Status ~ all 13's\n------------------------------------------")
+print("\n\nMythic Plus KSM Status \n( Approximately all level", min_key_level, ")\n------------------------------------------")
 
 # Loop through the dungeon short names in array
 for dungeon in dungeons:
