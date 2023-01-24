@@ -3,9 +3,11 @@ import requests
 import json
 import urllib
 
-#Set Character Realm and Name
+#Config
 realm = "altar-of-storms"
-character = "ineedmypants"
+character = "ineedmythong"
+min_key_level = 13
+io_req = 2000
 
 #URI encode Player name to account for special characters
 encoded_name = urllib.parse.quote(character)
@@ -13,8 +15,6 @@ encoded_name = urllib.parse.quote(character)
 # Array of Short Names of Dungeons
 # SL SEASON 3 dungeons=["MISTS", "DOS", "HOA", "SD", "NW", "SOA", "PF", "TOP", "GMBT", "STRT"]
 # SL SEASON 4 dungeons=["STRT", "GMBT", "UPPR", "LOWR", "WORK", "YARD", "GD", "ID"]
-min_key_level = 13
-io_req = 2000
 dungeons = ["AA", "AV", "COS", "HOV", "NO", "RLP", "SBG", "TJS"]
 
 # Retrieve character information from Raider.io API
@@ -28,7 +28,7 @@ print(response["gear"]["item_level_equipped"],response["active_spec_name"],respo
 print(response["realm"])
 print(response["mythic_plus_scores_by_season"][0]["scores"]["all"], end = " ")
 if response["mythic_plus_scores_by_season"][0]["scores"]["all"] < io_req:
-    print("( X )")
+    print("- You need", io_req - response["mythic_plus_scores_by_season"][0]["scores"]["all"], "more points.")
 else:
     print("( ✔ )")
 
