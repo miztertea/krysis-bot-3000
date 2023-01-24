@@ -32,9 +32,16 @@ fi
 # Retrieve the character information
 printf "Character Information\n---------------------\n"
 jq -jrc '.name, " <",.guild.name,">","\n",.gear.item_level_equipped," ",.active_spec_name," ",.class,"\n",.realm,"\n"' $temp_file
-jq -rc '.mythic_plus_scores_by_season[] | .scores | .all,"\n"' $temp_file
+score=$(jq -rc '.mythic_plus_scores_by_season[0] | .scores | .all' $temp_file)
+scoreInt=${score%.*}
+if (( $scoreInt > $ioreq ))
+then
+  printf "$score ( ✔ )"
+else
+  printf "$score ( X )"
+fi
 # Output the header
-printf "Mythic Plus KSM Status ~ all $keylevel's\n------------------------------------------\n"
+printf "\n\nMythic Plus KSM Status ~ all $keylevel's\n------------------------------------------\n"
 
 # Loop through the dungeon short names in array
 for i in "${dungeons[@]}"
