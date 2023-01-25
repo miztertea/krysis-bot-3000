@@ -1,7 +1,5 @@
 #Import Required Libraries
-import requests
-import json
-import urllib
+import requests, json, urllib
 
 def my_function(realm, character):
     #Config

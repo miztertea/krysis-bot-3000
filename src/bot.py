@@ -1,14 +1,9 @@
 # This example requires the 'message_content' intent.
-
-import discord
+import os, sys, discord
 from discord.ext import commands
 from ksmdiscord import *
 from io import StringIO
-import sys
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = discord.Intents.default()
@@ -26,4 +21,11 @@ async def ksm(ctx, realm, character):
     sys.stdout = sys.__stdout__
     await ctx.send(temp_out.getvalue())
 
+@ksm.error
+async def ksm_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('Missing argument... Please ensure you use $ksm realm character')
+
+    elif isinstance(error, commands.CommandError):
+        await ctx.send('Character not found... Please check the name and try again')
 bot.run(TOKEN)

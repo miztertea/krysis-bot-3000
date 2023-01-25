@@ -1,0 +1,3 @@
+# Python Library Requirements
+discord
+requests
