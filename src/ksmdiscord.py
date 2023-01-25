@@ -3,8 +3,6 @@ import requests, json, urllib
 
 def my_function(realm, character):
     #Config
-    #realm = "altar-of-storms"
-    #character = "ineedmythong"
     min_key_level = 13
     io_req = 2000
 
