@@ -1,32 +1,38 @@
-# World of Warcraft KSM Tracker
-A simple discord bot to retrieve a character from raider.io that determines whether or not the character has the necessary mythic+ score met for the Keystone Master achievement and provide recommendations for which dungeons have not been completed at a minimum level for the given week.
+# KRYSIS-BOT-3000
+A simple discord bot to retrieve a character from raider.io. It can determine whether or not the character has the necessary mythic+ score met for the Keystone Master achievement and provide recommendations for which dungeons have not been completed at a minimum level for the given week.  It can also retrieve a characters rank for their given realm and spec.
 
 Example output:
 ```
 Character Information
 ---------------------
-Kaiser < Krysis >
-397 Windwalker Monk
-Ysondre
-2017.6 ( ✔ )
+Føxius <Krysis>
+407 Beast Mastery Hunter
+Altar of Storms
+2463.3 ( ✔ )
 
-Mythic Plus KSM Status 
-( Approximately all level 13 )
-------------------------------------------
-AA : Fortified ( ✔ ) Tyrannical ( X )
-AV : Fortified ( X ) Tyrannical ( X )
-COS : Fortified ( ✔ ) Tyrannical ( X )
-HOV : Fortified ( ✔ ) Tyrannical ( X )
-NO : Fortified ( ✔ ) Tyrannical ( X )
-RLP : Fortified ( X ) Tyrannical ( X )
-SBG : Tyrannical ( ✔ ) Fortified ( X )
-TJS : Fortified ( ✔ ) Tyrannical ( X )
++---------+------------+-----------+
+| Dungeon | Tyrannical | Fortified |
++---------+------------+-----------+
+|    AA   |     ✔      |     ✔     |
+|    AV   |     ✔      |     ✔     |
+|   COS   |     ✔      |     ✔     |
+|   HOV   |     ✔      |     ✔     |
+|    NO   |     ✔      |     ✔     |
+|   RLP   |     ✔      |     ✔     |
+|   SBG   |     ✔      |     ✔     |
+|   TJS   |     ✔      |     ✔     |
++---------+------------+-----------+
+(Anything 13 or higher shows as a ✔)
+
+Last Updated: 2023-01-23T20:26:31.000Z
 ```
 
 ### Using my hosted discord bot:
 - Invite the discord bot to your server: https://discord.com/api/oauth2/authorize?client_id=1067545463982653470&permissions=2048&scope=bot
-- Invoke the bot using the following syntax: $ksm <realm> <character>
+- Invoke the ksm function using the following syntax: $ksm <realm> <character>
 -- Example: $ksm ysondre kaiser
+- Invoke the realm rank function using the following syntax: $rank <realm> <character> <role>
+-- Example: $ksm ysondre kaiser healer
 
 ### Building the bot from source
 - Create an app at: https://discord.com/developers/applications/
