@@ -82,4 +82,4 @@ def rio_rank(realm, character, role):
     api_url = "https://raider.io/api/v1/characters/profile?region=us&realm={}&name={}&fields=mythic_plus_ranks".format(realm,encoded_name)
     response = requests.get(api_url).json()
     classRank = response["mythic_plus_ranks"]["class_" + str(role)]["realm"]
-    return str.capitalize(character)+" is the #"+str(classRank)+" "+response["active_spec_name"]+" "+response["class"]+" "+str.capitalize(role)+" on "+str.capitalize(realm)
+    return str.capitalize(character)+" is the #"+str(classRank)+" "+response["active_spec_name"]+" "+response["class"]+" "+role+" on "+str.capitalize(realm)
