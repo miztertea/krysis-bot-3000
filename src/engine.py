@@ -5,13 +5,15 @@ def ksm_status(realm, character):
     #Config
     min_key_level = 13
     io_req = 2000
-    dungeons = ["AA", "AV", "COS", "HOV", "NO", "RLP", "SBG", "TJS"]
+    season = "season-df-2"
+    #dungeons = ["AA", "AV", "COS", "HOV", "NO", "RLP", "SBG", "TJS"]
+    dungeons = ["BH", "FH", "HOI", "NL", "NELT", "UNDR", "VP", "ULD"]
     
     #URI encode Player name to account for special characters
     encoded_name = urllib.parse.quote(character)
 
     # Retrieve character information from Raider.io API
-    api_url = "https://raider.io/api/v1/characters/profile?region=us&realm={}&name={}&fields=gear%2Cguild%2Cmythic_plus_scores_by_season%3Acurrent%2Cmythic_plus_best_runs%2Cmythic_plus_alternate_runs".format(realm,encoded_name)
+    api_url = "https://raider.io/api/v1/characters/profile?region=us&realm={}&name={}&fields=gear%2Cguild%2Cmythic_plus_scores_by_season%3A{}}%2Cmythic_plus_best_runs%2Cmythic_plus_alternate_runs".format(realm,encoded_name,season)
     response = requests.get(api_url).json()
 
     # Retrieve the character information
@@ -81,5 +83,5 @@ def rio_rank(realm, character, role):
     # Retrieve character information from Raider.io API
     api_url = "https://raider.io/api/v1/characters/profile?region=us&realm={}&name={}&fields=mythic_plus_ranks".format(realm,encoded_name)
     response = requests.get(api_url).json()
-    classRank = response["mythic_plus_ranks"]["class_" + str(role)]["realm"]
+    classRank = response["mythic_plus_ranks"]["class_" + str.lower(role)]["realm"]
     return str.capitalize(character)+" is the #"+str(classRank)+" "+response["active_spec_name"]+" "+response["class"]+" "+role+" on "+str.capitalize(realm)
